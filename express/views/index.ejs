@@ -1,0 +1,17 @@
+
+<% layout('layout')%>
+<!--  邏輯不加 -->
+    <% if(show){ %>
+     <span>資料</span>
+    <%} %>
+   <!-- 加上  - 呈現HTML -->
+    <%-title%>
+    <!-- /*加 = 號 HTML 在外圍 -->
+    <h2><%=BOSS%></h2>
+
+     <ul>
+     <% for(var i=0;course.length>i;i++){ %>
+        <li> <%- course[i] %></li>
+         <% } %>
+        </ul>
+    

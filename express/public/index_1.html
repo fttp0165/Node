@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+     <input id="txt" type="text" >
+     <input id="send" type="button" value="送出">
+     <ul id="list">
+
+     </ul>
+     
+
+
+     <!-- The core Firebase JS SDK is always required and must be listed first -->
+     <script src="https://www.gstatic.com/firebasejs/7.6.1/firebase-app.js"></script>
+            
+     <!-- TODO: Add SDKs for Firebase products that you want to use
+          https://firebase.google.com/docs/web/setup#available-libraries -->
+     <script src="https://www.gstatic.com/firebasejs/7.6.1/firebase-analytics.js"></script>
+     <script src="https://www.gstatic.com/firebasejs/7.6.1/firebase-database.js"></script>
+    <script>
+        // Your web app's Firebase configuration
+        var firebaseConfig = {
+          apiKey: "AIzaSyDXf7FzDXsH4gTHGJo8X25na1mSHN6OLZA",
+          authDomain: "nodetest-741a5.firebaseapp.com",
+          databaseURL: "https://nodetest-741a5.firebaseio.com",
+          projectId: "nodetest-741a5",
+          storageBucket: "nodetest-741a5.appspot.com",
+          messagingSenderId: "487081433208",
+          appId: "1:487081433208:web:c0d22f0120bda03d80758d",
+          measurementId: "G-Y47N6S1NXQ"
+        };
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+        firebase.analytics();
+        // var db=firebase.database();
+        // console.log(db);
+        // db.ref().set('hi');
+        //firebase.database().ref('myName').set('benny');
+        
+        var db=firebase.database();
+        // var myName=db.ref("myName");
+        //once 讀取一次資料庫的資料 on 隨時監聽
+        //once(讀取的位置,回傳函式)
+        //snapshot 快照 把讀出來的值快照 放在snapshot
+        //val 由firebase 賭取資料要轉js 顯示須轉為val
+        // myName.on('value',function(snapshot){
+        //     console.log(snapshot.val());
+        //     var str=snapshot.val();
+        //     document.getElementById('title').textContent=str;
+        // });
+        // db.ref('todos').push({context:"今天要洗澡"});
+        // //var todos=db.database.ref('todos');
+        // //child 子路徑 , remove()
+        // var todos=db.ref().child('todos');
+        // todos.child('-Lx769Z46VmNNunIHBbr').remove();
+        
+        var txt=document.getElementById("txt");
+        var send=document.getElementById("send");
+        var list=document.getElementById("list");
+        var todos=db.ref("todos");
+        send.addEventListener('click',function(e){
+          //txt.value;
+          console.log(txt.value);
+          todos.push({context:txt.value});
+        })
+ 
+         todos.on('value',function(snapshot){
+           console.log(snapshot.val());
+           var context=snapshot.val();
+           var temp;
+           var str='';
+           for(temp in context)
+             {
+               console.log(context[temp]);
+               str+="<li>"+context[temp].context+"</li>";
+             }
+             list.innerHTML=str;
+         }
+         )
+        
+      </script>
+    
+</body>
+</html>
