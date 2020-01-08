@@ -32,7 +32,14 @@ app.get('/search',function(req,res){
 app.post('/searchList',function(req,res){
     console.log(req.body);
     //顯示searchText 的值
-    console.log(req.body.searchText);
+    //console.log(req.body.searchText);
+    //轉址
+    res.redirect('search');
+
+
+    //由路由決定轉址 /searchList
+    //res.render('search');
+
 })
 
 //設定樣板在views 資料夾
