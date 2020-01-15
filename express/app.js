@@ -35,11 +35,20 @@ app.post('/searchList',function(req,res){
     //console.log(req.body.searchText);
     //轉址
     res.redirect('search');
-
-
     //由路由決定轉址 /searchList
     //res.render('search');
+})
 
+app.post('/searchAJAX',function(req,res){
+    console.log(req.body);
+    res.send('hello');
+    
+    //顯示searchText 的值
+    console.log(req.body.searchList);
+    //轉址
+   // res.redirect('search');
+    //由路由決定轉址 /searchList
+    //res.render('search');
 })
 
 //設定樣板在views 資料夾
