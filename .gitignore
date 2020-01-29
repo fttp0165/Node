@@ -1,0 +1,5 @@
+# 檔案名稱 .gitignore
+
+# 忽略 firebase key 檔案
+project_Express_firebase/nodetest-741a5-firebase-adminsdk-6bfl1-de3c0fac7f.json
+

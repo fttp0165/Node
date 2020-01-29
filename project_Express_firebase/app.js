@@ -1,12 +1,7 @@
 // var createError = require('http-errors');
 var express = require('express');
-// var path = require('path');
 var engine=require('ejs-locals');
 var bodyParser=require('body-parser');
-// var cookieParser = require('cookie-parser');
-// var logger = require('morgan');
-// var indexRouter = require('./routes/index');
-// var usersRouter = require('./routes/users');
 var app = express();
 
 //============================================
@@ -72,6 +67,8 @@ app.get('/',function(req,res){
 
 })
 
+
+//新增
 app.post('/addTodo',function(req,res){
   var content=req.body.content;
   var contentRef=fireData.ref('todos').push();
